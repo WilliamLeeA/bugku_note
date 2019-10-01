@@ -1,0 +1,26 @@
+他告诉你就是    备份是个好东西  应该想到  可以扫描后台  的 。.bak文件
+
+
+include_once "flag.php";
+ini_set("display_errors", 0);
+$str = strstr($_SERVER['REQUEST_URI'], '?');
+
+$str = substr($str,1);
+
+$str = str_replace('key','',$str);
+
+parse_str($str);
+
+echo md5($key1);
+
+
+echo md5($key2);
+
+if(md5($key1) == md5($key2) && $key1 !== $key2){
+    echo $flag."取得flag";
+}
+?>
+
+
+意思就是  过滤 key这个关键词    然后 REQUEST_URI  意思就是  读取你的 uri 手动分离参数 结合 下面的key1和key2知道要有这两个参数  
+紧接着 后面会过滤key为""   所以采取双写绕过

